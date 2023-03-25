@@ -1,0 +1,10 @@
+#!/bin/sh
+# 
+
+if [ "$1" = "-h" -o "$1" = "--help" -o -z "$1" -o -z "$2" ]
+then
+    echo "Usage: $0 STRING DEST_FILE";
+    echo "Appends a new line with STRING in DEST_FILE unless already present"; exit;
+fi
+
+[ -f "$2" ] && grep -qF "^$1$" "$2" || echo "$1" >> "$2"
